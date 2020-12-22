@@ -4,7 +4,7 @@ import com.ozygod.Graph.DepthFirstSearch;
 import com.ozygod.Graph.Graph;
 import com.ozygod.Graph.Search;
 
-public class TestSearch {
+public class GraphSearchTest {
     public static void main(String[] args) {
         int s = 0;
 

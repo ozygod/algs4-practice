@@ -27,6 +27,7 @@ public class LeetCodeTest {
 //        for (int i =0; i < demo.length; i++) {
 //            System.out.println("content:" + demo[i]);
 //        }
+
         String s = "A man, a plan, a canal: Panama";
         System.out.println(LeetCodeTest.isPalindrome(s));
 
