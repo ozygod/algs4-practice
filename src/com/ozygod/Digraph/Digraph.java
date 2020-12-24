@@ -1,4 +1,4 @@
-package com.ozygod.Graph;
+package com.ozygod.Digraph;
 
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Stack;
@@ -6,41 +6,45 @@ import edu.princeton.cs.algs4.Stack;
 import java.io.File;
 import java.util.Scanner;
 
-public class Graph {
+public class Digraph {
     private static final String NEWLINE = System.getProperty("line.separator");
     private final int V;
     private int E;
     private Bag<Integer>[] adj;
-    public Graph(int V) {
+    private int[] indegree;
+
+    public Digraph(int V) {
         this.V = V;
         this.E = 0;
         adj = (Bag<Integer>[]) new Bag[V];
+        indegree = new int[V];
         for (int i = 0; i < V; i++) {
             adj[i] = new Bag<>();
         }
     }
 
-    public Graph(String path) {
+    public Digraph(String path) {
         File file = new File(path);
         try {
             Scanner scanner = new Scanner(file);
-            this.V = Integer.valueOf(scanner.nextLine());
+            this.V = scanner.nextInt();
             this.adj = (Bag<Integer>[]) new Bag[V];
+            this.indegree = new int[V];
             for (int i = 0; i < V; i++) {
                 adj[i] = new Bag<>();
             }
-            scanner.nextLine();
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] lines = line.split(" ");
-                addEdge(Integer.valueOf(lines[0]), Integer.valueOf(lines[1]));
+            int E = scanner.nextInt();
+            for (int i = 0; i < E; i++) {
+                int v = scanner.nextInt();
+                int w = scanner.nextInt();
+                addEdge(v, w);
             }
         } catch (Exception ex) {
             throw new IllegalArgumentException("invalid input format in Graph constructor", ex);
         }
     }
 
-    public Graph(Graph G) {
+    public Digraph(Digraph G) {
         this.V = G.V();
         this.E = G.E();
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -48,6 +52,11 @@ public class Graph {
         adj = (Bag<Integer>[]) new Bag[V];
         for (int i = 0; i < V; i++) {
             adj[i] = new Bag<>();
+        }
+
+        indegree = new int[V];
+        for (int i = 0; i < V; i++) {
+            this.indegree[i] = G.indegree(i);
         }
 
         for (int v = 0; v < G.V(); v++) {
@@ -79,7 +88,6 @@ public class Graph {
         validateVertex(w);
         E++;
         adj[v].add(w);
-        adj[w].add(v);
     }
 
     public Iterable<Integer> adj(int v) {
@@ -87,30 +95,23 @@ public class Graph {
         return adj[v];
     }
 
-    public int degree(int v) {
+    public Digraph reverse() {
+        Digraph R = new Digraph(V);
+        for (int i = 0; i < V; i++) {
+            for (int w: adj(i))
+                R.addEdge(w, i);
+        }
+        return R;
+    }
+
+    public int indegree(int v) {
+        validateVertex(v);
+        return indegree[v];
+    }
+
+    public int outdegree(int v) {
         validateVertex(v);
         return adj[v].size();
-    }
-
-    public int maxDegree() {
-        int max = 0;
-        for (int i = 0; i < V(); i++) {
-            if (degree(i) > max) max = degree(i);
-        }
-        return max;
-    }
-
-    public double avgDegree() {
-        return 2.0 * E() / V();
-    }
-
-    public int numberOfSelfLoops() {
-        int count = 0;
-        for (int i = 0; i < V(); i++) {
-            for (int w : adj(i))
-                if (i == w) count++;
-        }
-        return count/2;
     }
 
     public String toString() {
@@ -127,8 +128,8 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        String path = "D:\\workspace\\java\\algs4-data\\tinyG.txt";
-        Graph graph = new Graph(path);
+        String path = "D:\\workspace\\java\\algs4-data\\tinyDG.txt";
+        Digraph graph = new Digraph(path);
         System.out.println(graph.toString());
     }
 }
