@@ -21,8 +21,6 @@ public class Topological {
 
     public static void main(String[] args) {
         String path = "D:\\workspace\\java\\algs4-data\\jobs.txt";
-//        edu.princeton.cs.algs4.SymbolDigraph symbolDigraph = new edu.princeton.cs.algs4.SymbolDigraph(path, "/");
-//        edu.princeton.cs.algs4.Topological topological = new edu.princeton.cs.algs4.Topological(symbolDigraph.digraph());
         SymbolDigraph symbolDigraph = new SymbolDigraph(path, "/");
         Topological topological = new Topological(symbolDigraph.graph());
         for (int v : topological.order()) {

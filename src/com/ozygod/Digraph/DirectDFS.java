@@ -9,6 +9,13 @@ public class DirectDFS {
         dfs(graph, s);
     }
 
+    public DirectDFS(Digraph digraph, Iterable<Integer> sources) {
+        marked = new boolean[digraph.V()];
+        for (int v : sources) {
+            if (!marked[v]) dfs(digraph, v);
+        }
+    }
+
     private void dfs(Digraph graph, int v) {
         marked[v] = true;
         count++;
