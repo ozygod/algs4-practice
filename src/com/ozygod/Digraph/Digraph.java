@@ -86,8 +86,9 @@ public class Digraph {
     public void addEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        E++;
         adj[v].add(w);
+        indegree[w]++;
+        E++;
     }
 
     public Iterable<Integer> adj(int v) {
