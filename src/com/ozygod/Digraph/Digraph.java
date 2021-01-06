@@ -115,6 +115,13 @@ public class Digraph {
         return adj[v].size();
     }
 
+    public boolean hasEdge(int v, int w) {
+        for (int t : adj[v]) {
+            if (t == w) return true;
+        }
+        return false;
+    }
+
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append(V + " vertices, " + E + " edges " + NEWLINE);

@@ -1,8 +1,10 @@
 package com.ozygod.Merge;
 
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 归并排序
+ */
 public class Merge {
     public static void sort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
