@@ -3,6 +3,10 @@ package com.ozygod.Digraph;
 import com.ozygod.Queue;
 import edu.princeton.cs.algs4.Stack;
 
+/**
+ * 单点最短有向路径
+ * 从s到给定顶点v是否存在一条最短的有向路径
+ */
 public class BreathFirstDirectedPaths {
     private static final int MAX = Integer.MAX_VALUE;
     private boolean[] marked;

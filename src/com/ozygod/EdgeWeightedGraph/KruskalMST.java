@@ -6,6 +6,11 @@ import com.ozygod.UF.WeightedQuickUnionUF;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * Kruskal算法
+ *
+ * 先将所有边加入到最小优先队列中，然后依次取出并合并，已经处理过的顶点跳过，直至横切边的数量等于V-1。
+ */
 public class KruskalMST {
     private static final double FLOATING_POINT_EPSILON = 1E-12;
     private Queue<Edge> mst;

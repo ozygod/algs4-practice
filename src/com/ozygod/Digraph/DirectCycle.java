@@ -3,6 +3,9 @@ package com.ozygod.Digraph;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 检测有向图是否有环
+ */
 public class DirectCycle {
     private boolean[] marked;
     private int[] edgeTo;

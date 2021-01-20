@@ -2,6 +2,11 @@ package com.ozygod.Digraph;
 
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 传递闭包
+ *
+ * 顶点对的可达性：是否存在一条从一个给定的顶点v到另一个给定的顶点w的路径
+ */
 public class TransitiveClosure {
     private DirectDFS[] all;
 

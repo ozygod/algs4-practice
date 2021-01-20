@@ -2,6 +2,10 @@ package com.ozygod.Digraph;
 
 import edu.princeton.cs.algs4.Stack;
 
+/**
+ * 单点有向路径
+ * 从s到给定目的顶点v是否存在一条有向路径
+ */
 public class DepthFirstDirectedPaths {
     private boolean[] marked;
     private int[] edgeTo;

@@ -1,22 +1,16 @@
-package com.ozygod.Digraph;
+package com.ozygod.EdgeWeightedDigraph;
 
 import com.ozygod.Queue;
 import edu.princeton.cs.algs4.Stack;
 
-/**
- * 有向图的深度优先排序
- * pre 前序
- * post 后序
- * reversePost 逆后序
- */
-public class DepthFirstOrder {
+public class EdgeWeightedDepthFirstOrder {
     private boolean[] marked;
     private Queue<Integer> pre;
     private Queue<Integer> post;
     private Stack<Integer> reversePost;
     private int count;
 
-    public DepthFirstOrder(Digraph graph) {
+    public EdgeWeightedDepthFirstOrder(EdgeWeightedDigraph graph) {
         marked = new boolean[graph.V()];
         pre = new Queue<>();
         post = new Queue<>();
@@ -27,11 +21,12 @@ public class DepthFirstOrder {
         }
     }
 
-    private void dfs(Digraph graph, int v) {
+    private void dfs(EdgeWeightedDigraph graph, int v) {
         pre.enqueue(v);
         marked[v] = true;
         count++;
-        for (int w : graph.adj(v)) {
+        for (DirectedEdge edge : graph.adj(v)) {
+            int w = edge.to();
             if (!marked[w]) dfs(graph, w);
         }
         post.enqueue(v);
@@ -56,14 +51,5 @@ public class DepthFirstOrder {
 
     public Iterable<Integer> reversePost() {
         return reversePost;
-    }
-
-    public static void main(String[] args) {
-        String path = "D:\\workspace\\java\\algs4-data\\tinyDAG.txt";
-        Digraph digraph = new Digraph(path);
-        DepthFirstOrder order = new DepthFirstOrder(digraph);
-        System.out.println(order.pre());
-        System.out.println(order.post());
-        System.out.println(order.reversePost());
     }
 }

@@ -2,6 +2,9 @@ package com.ozygod.Digraph;
 
 import com.ozygod.Queue;
 
+/**
+ * 有向图的强连通性
+ */
 public class KosarajuSSC {
     private boolean[] marked;
     private int[] id;

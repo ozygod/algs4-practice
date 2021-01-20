@@ -1,5 +1,11 @@
 package com.ozygod.Digraph;
 
+/**
+ * 拓扑排序
+ * 主要逻辑是：有向图深度优先排序的逆后序
+ *
+ * 可以处理优先级限制下的调度问题
+ */
 public class Topological {
     private Iterable<Integer> order;
 
@@ -10,6 +16,8 @@ public class Topological {
             order = depthFirstOrder.reversePost();
         }
     }
+
+
 
     public Iterable<Integer> order() {
         return order;

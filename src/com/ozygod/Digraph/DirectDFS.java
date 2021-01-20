@@ -1,5 +1,8 @@
 package com.ozygod.Digraph;
 
+/**
+ * 有向图：深度优先的可达性检测
+ */
 public class DirectDFS {
     private boolean[] marked;
     private int count;

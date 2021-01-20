@@ -8,6 +8,7 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Prim算法（实时实现）
+ * 一次取一个顶点，然后找到它最小的邻接边，加入最小生成树，已经处理过的顶点不再处理。
  */
 public class PrimMST {
     private static final double FLOATING_POINT_EPSILON = 1E-12;

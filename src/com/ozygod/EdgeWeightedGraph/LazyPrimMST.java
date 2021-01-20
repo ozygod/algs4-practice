@@ -8,6 +8,8 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Prim算法（延时实现）
+ * 一次取一个顶点，将它的邻接边都加入到最小优先队列中，然后获取权重最小的边加入到最小生成树中，
+ * 已经处理过的顶点不再处理，以此类推
  */
 public class LazyPrimMST {
     private static final double FLOATING_POINT_EPSILON = 1E-12;
